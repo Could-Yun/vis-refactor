@@ -1,5 +1,5 @@
 from pathlib import Path
-import json, re, threading, functools, http.server
+import json, re, threading, functools, http.server,sys
 from html.parser import HTMLParser
 from urllib.parse import urlsplit,unquote
 from playwright.sync_api import sync_playwright
@@ -26,6 +26,7 @@ class Quiet(http.server.SimpleHTTPRequestHandler):
 server=http.server.ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(ROOT)))
 threading.Thread(target=server.serve_forever,daemon=True).start()
 base=f'http://127.0.0.1:{server.server_port}/'
+if len(sys.argv)>1:base=sys.argv[1].rstrip('/')+'/'
 report={'missingLinks':bad,'pages':[],'interaction':{}}
 with sync_playwright() as pw:
     browser=pw.chromium.launch(channel='msedge',headless=True)
@@ -74,5 +75,6 @@ with sync_playwright() as pw:
             report['lessonTabs'].append({'id':ident,'errors':list(errors),'failed':list(failed)})
     browser.close()
 server.shutdown()
-(OUT/'验收报告.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+filename='线上验收报告.json' if len(sys.argv)>1 else '验收报告.json'
+(OUT/filename).write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
 print(json.dumps(report,ensure_ascii=False,indent=2))
