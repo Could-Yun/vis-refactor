@@ -98,7 +98,7 @@ const Search = {
           return r.json();
         })
         .then((j) => (this.idx = j))
-        .catch((e) => { console.warn('[search] 索引加载失败', e); return null; });
+        .catch((e) => { this.loading = null; console.warn('[search] 索引加载失败', e); return null; });
     }
     return this.loading;
   },
@@ -178,6 +178,9 @@ function buildSearchUI() {
     count.textContent = '';
     input.focus();
     await Search.load();
+    // A reader may type while a remote index is still downloading.
+    // Re-run the query when loading finishes instead of leaving stale zero results.
+    render();
   };
   const close = () => ov.removeAttribute('open');
 

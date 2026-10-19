@@ -50,6 +50,7 @@ with sync_playwright() as pw:
     page.evaluate("window.__i18n.setLocale('en-US')")
     report['interaction']['chooserEnglish']=page.locator('#choose h3').inner_text()
     page.locator('.search-open').click();page.locator('.search-overlay input').fill('color')
+    page.wait_for_function("window.__features?.Search?.idx !== null",timeout=30000)
     page.wait_for_timeout(500)
     report['interaction']['searchEnglish']=page.locator('.search-results a').count()
     page.keyboard.press('Escape')
