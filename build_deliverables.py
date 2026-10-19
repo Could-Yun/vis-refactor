@@ -6,6 +6,11 @@ from docx.oxml.ns import qn
 import zipfile,json
 ROOT=Path(__file__).resolve().parent;out=ROOT/'交付物';out.mkdir(exist_ok=True)
 doc=Document();sec=doc.sections[0];sec.top_margin=sec.bottom_margin=Cm(2.3);sec.left_margin=sec.right_margin=Cm(2.4)
+# Remove template decorations and theme colours to keep the report black and white.
+for st in doc.styles:
+ for node in list(st.element.iter(qn('w:pBdr'))):node.getparent().remove(node)
+ for node in st.element.iter(qn('w:color')):
+  node.attrib.clear();node.set(qn('w:val'),'000000')
 normal=doc.styles['Normal'];normal.font.name='Times New Roman';normal.font.size=Pt(12);normal.element.rPr.rFonts.set(qn('w:eastAsia'),'宋体');normal.paragraph_format.line_spacing=1.5
 for h in ['Title','Heading 1','Heading 2']:
  st=doc.styles[h];st.font.name='Times New Roman';st.font.color.rgb=RGBColor(0,0,0);st.element.get_or_add_rPr().get_or_add_rFonts().set(qn('w:eastAsia'),'黑体');st.font.size=Pt(16 if h=='Title' else 14)
