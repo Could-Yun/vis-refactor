@@ -1,0 +1,127 @@
+/* lesson-05.css — 第 05 章独有样式（core.css 之后加载） */
+.ts-svg {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  display: block;
+}
+.ts-svg .hover-line {
+  stroke: #1e293b;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+.ts-svg .tip {
+  fill: #1e293b;
+}
+.attr-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin: 12px 0;
+}
+.attr-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.attr-card:hover {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.attr-icon {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.attr-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1e293b;
+}
+.attr-key {
+  font-size: 10px;
+  color: #94a3b8;
+  margin-top: 2px;
+  font-family: "JetBrains Mono", monospace;
+}
+.attr-detail-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #334155;
+}
+.attr-detail-card h4 {
+  margin: 0 0 4px;
+  font-size: 15px;
+  color: #1e293b;
+}
+.attr-detail-card .example {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #475569;
+}
+.cal-svg {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  display: block;
+  margin: 10px 0;
+}
+.cal-svg rect.cell {
+  stroke: #fff;
+  stroke-width: 1;
+}
+.cal-legend-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: #64748b;
+  margin: 8px 0;
+}
+.legend-strip {
+  display: flex;
+  flex: 1;
+  height: 14px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.legend-strip > div {
+  flex: 1;
+}
+.legend-low, .legend-high {
+  font-family: "JetBrains Mono", monospace;
+}
+.spiral-svg {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  display: block;
+  margin: 10px 0;
+}
+.spiral-svg path.seg {
+  cursor: pointer;
+  transition: stroke 0.15s;
+}
+.storyline-svg {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  display: block;
+}
+.storyline-svg .event-layer circle {
+  transition: r 0.15s;
+}
+.storyline-svg .event-layer g.event:hover circle {
+  r: 22;
+}

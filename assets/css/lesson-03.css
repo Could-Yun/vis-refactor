@@ -1,0 +1,14 @@
+/* lesson-03.css — 第 03 章独有样式（core.css 之后加载） */
+.cvd-paper {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 10px 0;
+}
+.cvd-paper-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 10px 8px;
+  text-align: center;
+}

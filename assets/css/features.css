@@ -1,0 +1,225 @@
+/* features.css — 重构新增功能：阅读进度 / 本章目录 / 全站搜索 / 新可视化挂载点 */
+
+:root {
+  --feat-accent: #4338ca;
+  --feat-accent-soft: #eef2ff;
+  --feat-border: #e2e8f0;
+  --feat-muted: #64748b;
+  --feat-bg: #ffffff;
+  --feat-shadow: 0 10px 30px rgba(15, 23, 42, .12);
+}
+
+/* ---------- 顶部阅读进度条 ---------- */
+.reading-progress {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: transparent;
+  z-index: 999;
+  pointer-events: none;
+}
+.reading-progress > i {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #6366f1, #0ea5e9);
+  transition: width .12s linear;
+}
+
+/* ---------- 顶栏搜索按钮 ---------- */
+.search-open {
+  margin-left: auto;
+  margin-right: .5rem;
+  background: rgba(255, 255, 255, .14);
+  border: 1px solid rgba(255, 255, 255, .28);
+  color: inherit;
+  font-size: 1rem;
+  line-height: 1;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.search-open:hover { background: rgba(255, 255, 255, .26); }
+
+/* ---------- 搜索面板 ---------- */
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, .45);
+  display: none;
+  z-index: 1000;
+  padding: 8vh 1rem 1rem;
+}
+.search-overlay[open] { display: block; }
+.search-box {
+  max-width: 720px;
+  margin: 0 auto;
+  background: var(--feat-bg);
+  border-radius: 14px;
+  box-shadow: var(--feat-shadow);
+  overflow: hidden;
+}
+.search-box input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid var(--feat-border);
+  padding: 1.05rem 1.2rem;
+  font-size: 1.05rem;
+  outline: none;
+  box-sizing: border-box;
+}
+.search-meta {
+  display: flex;
+  justify-content: space-between;
+  padding: .45rem 1.2rem;
+  font-size: .8rem;
+  color: var(--feat-muted);
+  background: #f8fafc;
+}
+.search-results {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 56vh;
+  overflow-y: auto;
+}
+.search-results li { border-bottom: 1px solid #f1f5f9; }
+.search-results a {
+  display: block;
+  padding: .7rem 1.2rem;
+  text-decoration: none;
+  color: inherit;
+}
+.search-results a:hover,
+.search-results li.sel a { background: var(--feat-accent-soft); }
+.sr-crumb {
+  display: block;
+  font-size: .74rem;
+  color: var(--feat-accent);
+  margin-bottom: .18rem;
+}
+.sr-title { display: block; font-weight: 600; font-size: .95rem; }
+.sr-snip {
+  display: block;
+  font-size: .82rem;
+  color: var(--feat-muted);
+  margin-top: .18rem;
+  line-height: 1.5;
+}
+.sr-snip mark {
+  background: #fde68a;
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 2px;
+}
+.search-empty { padding: 1.6rem 1.2rem; text-align: center; color: var(--feat-muted); }
+
+/* ---------- 增强既有目录 .chapter-nav（不新建目录） ---------- */
+/* 徽章是 h3 的兄弟节点（见 features.js 注释），所以 h3 不能用 flex 容器定位它 */
+.chapter-nav h3 { display: block; }
+.chapter-nav .toc-count {
+  display: inline-block;
+  margin: -.3rem 0 .5rem;
+  font-size: .72rem;
+  font-weight: 600;
+  color: var(--feat-accent);
+  background: var(--feat-accent-soft);
+  border-radius: 999px;
+  padding: .1rem .45rem;
+  letter-spacing: .02em;
+}
+/* 已读小节打勾；不覆盖原有 .active 样式 */
+.chapter-nav a[data-chapter].done::after {
+  content: '✓';
+  float: right;
+  color: #16a34a;
+  font-size: .78rem;
+  font-weight: 700;
+  margin-left: .35rem;
+}
+.chapter-nav a[data-chapter].done.active::after { color: #fff; }
+
+/* ---------- 新增可视化挂载点 ---------- */
+.viz-mount {
+  margin: 1rem 0;
+  padding: .9rem;
+  border: 1px solid var(--feat-border);
+  border-radius: 12px;
+  background: #fcfdff;
+  min-height: 120px;
+}
+.viz-mount .viz-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  align-items: center;
+  margin-bottom: .7rem;
+}
+.viz-mount .viz-title { font-weight: 600; font-size: .95rem; }
+.viz-mount .viz-ctl {
+  display: flex;
+  gap: .35rem;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+.viz-mount button.chip {
+  border: 1px solid var(--feat-border);
+  background: #fff;
+  border-radius: 999px;
+  padding: .26rem .66rem;
+  font-size: .8rem;
+  cursor: pointer;
+}
+.viz-mount button.chip[aria-pressed="true"] {
+  background: var(--feat-accent);
+  border-color: var(--feat-accent);
+  color: #fff;
+}
+.viz-note {
+  font-size: .82rem;
+  color: var(--feat-muted);
+  margin-top: .6rem;
+  line-height: 1.6;
+}
+.viz-mount svg { max-width: 100%; height: auto; display: block; }
+
+/* ---------- 门户：进度环与知识地图 ---------- */
+.card-progress {
+  position: absolute;
+  top: .8rem;
+  right: .9rem;
+  width: 34px;
+  height: 34px;
+}
+.card-progress text { font-size: 10px; fill: #475569; font-weight: 600; }
+.portal-resume {
+  display: inline-block;
+  margin-top: .6rem;
+  padding: .45rem .9rem;
+  border-radius: 999px;
+  background: var(--feat-accent);
+  color: #fff;
+  text-decoration: none;
+  font-size: .88rem;
+}
+#knowledge-map { width: 100%; min-height: 420px; }
+#knowledge-map .node circle { cursor: pointer; stroke: #fff; stroke-width: 1.5; }
+#knowledge-map .node text { font-size: 11px; pointer-events: none; }
+#knowledge-map .node.chap text { font-size: 13px; font-weight: 700; }
+#knowledge-map line.link { stroke: #cbd5e1; stroke-width: 1.2; }
+#knowledge-map line.link.hot { stroke: #4338ca; stroke-width: 2.2; }
+#knowledge-map .dim { opacity: .18; }
+
+@media (max-width: 860px) {
+  .search-overlay { padding-top: 4vh; }
+  .toc-panel { display: none; }
+}
+
+.tool-options{display:flex;flex-wrap:wrap;gap:.5rem;margin:.8rem 0}
+.chooser-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:center}
+.chooser-grid h3{font-size:1.5rem;margin:.5rem 0;color:#4338ca}
+.color-panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1rem}
+.color-panels canvas{width:100%;height:auto;display:block;border-radius:8px}
+.color-panels h4{margin:.6rem 0}.color-mode{font:inherit;padding:.4rem;border:1px solid #cbd5e1;border-radius:6px;max-width:100%}
+.viz-mount{min-width:0}.viz-mount svg{overflow:visible}
+@media(max-width:700px){.chooser-grid,.color-panels{grid-template-columns:1fr}}

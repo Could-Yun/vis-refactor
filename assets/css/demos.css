@@ -1,0 +1,127 @@
+/* demos.css — Demo 画廊专用样式
+   修复原站缺陷：原 supplementary/index.html 引用 ../portal/styles.css，
+   而仓库中无 portal/ 目录，线上 404，导致 16 个卡片元素完全无样式。 */
+
+.demos-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.2rem 1.25rem 1rem;
+}
+.demos-header h1 {
+  margin: 0 0 .4rem;
+  font-size: 1.9rem;
+  letter-spacing: -.01em;
+}
+.demos-header .subtitle {
+  margin: 0;
+  color: #64748b;
+  font-size: .96rem;
+}
+
+.demos-main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem 3rem;
+}
+
+.demo-group { margin: 2.1rem 0 0; scroll-margin-top: 80px; }
+.demo-group > h2 {
+  margin: 0 0 .25rem;
+  font-size: 1.18rem;
+  color: #1e293b;
+  padding-bottom: .45rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+.demo-group .group-hint {
+  margin: .45rem 0 .9rem;
+  font-size: .85rem;
+  color: #6366f1;
+  background: #eef2ff;
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 999px;
+}
+.demo-group .group-note {
+  margin: .9rem 0 0;
+  font-size: .85rem;
+  color: #64748b;
+  line-height: 1.7;
+  padding: .7rem .9rem;
+  background: #f8fafc;
+  border-left: 3px solid #cbd5e1;
+  border-radius: 0 8px 8px 0;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+  gap: .9rem;
+}
+
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  padding: .95rem 1rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+.demo-card:hover {
+  border-color: #818cf8;
+  box-shadow: 0 8px 20px rgba(99, 102, 241, .13);
+  transform: translateY(-2px);
+}
+.dc-name { font-weight: 650; font-size: .98rem; color: #1e293b; }
+.dc-file {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: .74rem;
+  color: #94a3b8;
+}
+.dc-desc {
+  font-size: .85rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-top: .2rem;
+}
+
+/* 说明「已移除链接」的区块：刻意低调，不做成卡片 */
+.demo-group.removed { margin-top: 2.6rem; }
+.demo-group.removed > h2 {
+  font-size: 1rem;
+  color: #78716c;
+  border-bottom-color: #e7e5e4;
+}
+.demo-group.removed p {
+  font-size: .85rem;
+  color: #57534e;
+  line-height: 1.8;
+  background: #fafaf9;
+  border: 1px solid #e7e5e4;
+  border-radius: 10px;
+  padding: .9rem 1rem;
+}
+.demo-group.removed code {
+  background: #f5f5f4;
+  padding: .08rem .3rem;
+  border-radius: 4px;
+  font-size: .9em;
+}
+
+.demos-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1.4rem 1.25rem 2.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+.demos-footer a { color: #4338ca; text-decoration: none; }
+.demos-footer a:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .demos-header { padding-top: 1.4rem; }
+  .demos-header h1 { font-size: 1.5rem; }
+  .demo-grid { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>补充 Demo 集合 · 可视化导论</title>
+  <link rel="stylesheet" href="../assets/css/portal.css?v=20261019" />
+  <link rel="stylesheet" href="../assets/css/i18n.css?v=20261019" />
+  <link rel="stylesheet" href="../assets/css/features.css?v=20261019" />
+  <link rel="stylesheet" href="../assets/css/demos.css?v=20261019" />
+</head>
+<body>
+  <div class="reading-progress" aria-hidden="true"><i></i></div>
+
+  <nav class="course-topbar" data-current="demos">
+    <a class="brand" href="../">
+      <span class="back">←</span><span data-i18n="nav.home">课程门户</span>
+    </a>
+    <button type="button" class="search-open" aria-label="搜索">🔍</button>
+    <ul class="tabs">
+      <li><a href="../lesson-01/" data-i18n="nav.ch1">第 1 章 · 数据</a></li>
+      <li><a href="../lesson-02/" data-i18n="nav.ch2">第 2 章 · 数据可视化流程</a></li>
+      <li><a href="../lesson-03/" data-i18n="nav.ch3">第 3 章 · 色彩专题</a></li>
+      <li><a href="../lesson-04/" data-i18n="nav.ch4">第 4 章 · 低维可视化</a></li>
+      <li><a href="../lesson-05/" data-i18n="nav.ch5">第 5 章 · 时序可视化</a></li>
+    </ul>
+  </nav>
+
+  <header class="demos-header">
+    <h1 data-i18n="supp.title">补充 Demo 集合</h1>
+    <p class="subtitle" data-i18n="supp.tagline">与课程章节配合的实战 demo，可单独打开讲解</p>
+  </header>
+
+  <main class="demos-main">
+
+    <section class="demo-group" id="ch-1">
+      <h2 data-i18n="supp.ch1">第 1 章 · 数据</h2>
+      <p class="group-hint" data-i18n="supp.hint1">对应 doc-01：1.1 数据生成</p>
+      <div class="demo-grid">
+        <a class="demo-card" href="tableshow.html">
+          <span class="dc-name" data-i18n="demo.tableshow.name">数据表渲染</span>
+          <span class="dc-file">tableshow.html</span>
+          <span class="dc-desc" data-i18n="demo.tableshow.desc">用 d3 把新生 CSV 渲染成可读数据表，演示最朴素的「数据 → 视图」绑定。</span>
+        </a>
+        <a class="demo-card" href="newstudent.html">
+          <span class="dc-name" data-i18n="demo.newstudent.name">新生数据总览</span>
+          <span class="dc-file">newstudent.html</span>
+          <span class="dc-desc" data-i18n="demo.newstudent.desc">同一份新生数据的概览视图，配合 1.1 节的数据生成与字段定义。</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="demo-group" id="ch-2">
+      <h2 data-i18n="supp.ch2">第 2 章 · 数据可视化流程</h2>
+      <p class="group-hint" data-i18n="supp.hint2">对应 doc-02：4.4 树形列表</p>
+      <div class="demo-grid">
+        <a class="demo-card" href="treelist.html">
+          <span class="dc-name" data-i18n="demo.treelist.name">树形列表</span>
+          <span class="dc-file">treelist.html</span>
+          <span class="dc-desc" data-i18n="demo.treelist.desc">专业 → 班级 → 学生的可折叠层级列表，演示 classed 与事件委托。</span>
+        </a>
+        <a class="demo-card" href="nssystem.html">
+          <span class="dc-name" data-i18n="demo.nssystem.name">新生信息系统</span>
+          <span class="dc-file">nssystem.html</span>
+          <span class="dc-desc" data-i18n="demo.nssystem.desc">把表格、树、筛选拼成一个小系统，对应 Card 数据流模型的完整链路。</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="demo-group" id="ch-3">
+      <h2 data-i18n="supp.ch3">第 3 章 · 色彩专题</h2>
+      <p class="group-hint" data-i18n="supp.hint3">对应 doc-03：3.4 5 大色系</p>
+      <div class="demo-grid">
+        <a class="demo-card" href="sex_compare.html">
+          <span class="dc-name" data-i18n="demo.sex_compare.name">男女对比配色</span>
+          <span class="dc-file">sex_compare.html</span>
+          <span class="dc-desc" data-i18n="demo.sex_compare.desc">二分类数据的配色选择：定性色对与发散色的差别。</span>
+        </a>
+      </div>
+      <p class="group-note" data-i18n="demos.note.ch3">
+        本章理论配套的交互对比器已内置在第 3 章页面（色彩感知对比器），此处只保留原始 demo。
+      </p>
+    </section>
+
+    <section class="demo-group" id="ch-4">
+      <h2 data-i18n="supp.ch4">第 4 章 · 低维数据可视化</h2>
+      <p class="group-hint" data-i18n="supp.hint4">对应 doc-04：4.1 数据转换 / 4.3 曲线拟合 / 4.5 等值线</p>
+      <div class="demo-grid">
+        <a class="demo-card" href="crime1985.html">
+          <span class="dc-name" data-i18n="demo.crime1985.name">1985 犯罪数据散点</span>
+          <span class="dc-file">crime1985.html</span>
+          <span class="dc-desc" data-i18n="demo.crime1985.desc">双变量散点图，4.1 节数据转换的原始案例。</span>
+        </a>
+        <a class="demo-card" href="regression.html">
+          <span class="dc-name" data-i18n="demo.regression.name">线性回归拟合</span>
+          <span class="dc-file">regression.html</span>
+          <span class="dc-desc" data-i18n="demo.regression.desc">用 d3-regression 做最小二乘拟合并画出回归线，对应 4.3 曲线拟合。</span>
+        </a>
+        <a class="demo-card" href="mark.html">
+          <span class="dc-name" data-i18n="demo.mark.name">标记与通道</span>
+          <span class="dc-file">mark.html</span>
+          <span class="dc-desc" data-i18n="demo.mark.desc">点、线、面三类标记与位置、颜色、形状通道的组合演示。</span>
+        </a>
+        <a class="demo-card" href="contour.html">
+          <span class="dc-name" data-i18n="demo.contour.name">等值线（手写 Marching Squares）</span>
+          <span class="dc-file">contour.html</span>
+          <span class="dc-desc" data-i18n="demo.contour.desc">从 10×10 高程网格自己实现等值线追踪，对应 4.5 节。</span>
+        </a>
+        <a class="demo-card" href="contourd3.html">
+          <span class="dc-name" data-i18n="demo.contourd3.name">等值线（d3.contours）</span>
+          <span class="dc-file">contourd3.html</span>
+          <span class="dc-desc" data-i18n="demo.contourd3.desc">同一数据改用 d3.contours，和手写版对照看算法封装的取舍。</span>
+        </a>
+        <a class="demo-card" href="colormap.html">
+          <span class="dc-name" data-i18n="demo.colormap.name">等值线 + Viridis 配色</span>
+          <span class="dc-file">colormap.html</span>
+          <span class="dc-desc" data-i18n="demo.colormap.desc">等值线叠加感知均匀 colormap，把第 3、4 章串起来。</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="demo-group" id="ch-5">
+      <h2 data-i18n="supp.ch5">第 5 章 · 时序数据可视化</h2>
+      <p class="group-hint" data-i18n="supp.hint5">对应 doc-05：5.3 日历热图 / 5.4 阿基米德螺旋</p>
+      <div class="demo-grid">
+        <a class="demo-card" href="calendar.html">
+          <span class="dc-name" data-i18n="demo.calendar.name">螺旋时间轴日历 · 版本 1</span>
+          <span class="dc-file">calendar.html</span>
+          <span class="dc-desc" data-i18n="demo.calendar.desc">2008 年数据沿阿基米德螺旋排布，周期对齐在同一角度上。</span>
+        </a>
+        <a class="demo-card" href="calendar1.html">
+          <span class="dc-name" data-i18n="demo.calendar1.name">螺旋时间轴日历 · 版本 2</span>
+          <span class="dc-file">calendar1.html</span>
+          <span class="dc-desc" data-i18n="demo.calendar1.desc">同一数据的第二次迭代，调整了日/周粒度与标注方式。</span>
+        </a>
+        <a class="demo-card" href="calendar3.html">
+          <span class="dc-name" data-i18n="demo.calendar3.name">螺旋时间轴日历 · 版本 3</span>
+          <span class="dc-file">calendar3.html</span>
+          <span class="dc-desc" data-i18n="demo.calendar3.desc">最完整的一版，月份分隔与热力映射都更明显。</span>
+        </a>
+      </div>
+      <p class="group-note" data-i18n="demos.note.ch5">
+        三个版本用同一份 calendar_data_modified.csv，是同一演示的三次迭代，可对照看设计取舍。
+      </p>
+    </section>
+
+    <section class="demo-group removed" id="unavailable">
+      <h2 data-i18n="demos.removed.title">已移除的两个链接</h2>
+      <p data-i18n-html="demos.removed.body">
+        原站此处有 <code>volumeRendering.html</code> 与 <code>yearcalendar.html</code> 两个链接，
+        但仓库中<strong>不存在对应文件</strong>，线上实测均为 404。
+        前者所需的 <code>utils/volumeRendering.js</code> 虽然存在，却要加载一份原始体数据
+        （<code>loadRawVolumeData(url, dimensions)</code>），而该数据文件在仓库中缺失，
+        因此无法重建为可运行页面；后者没有任何对应源码。
+        为避免继续给出死链，本次重构移除了这两个入口并在此说明。
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="demos-footer">
+    <p><a href="../" data-i18n="common.back">← 返回课程门户</a></p>
+  </footer>
+
+  <script type="module" src="../assets/js/i18n.js?v=20261019"></script>
+  <script type="module" src="../assets/js/features.js?v=20261019"></script>
+</body>
+</html>
