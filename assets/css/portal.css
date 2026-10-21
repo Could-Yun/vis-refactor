@@ -56,6 +56,11 @@ html, body {
   border-bottom-style: solid;
 }
 .nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px 22px;
   background: white;
   border-bottom: 1px solid #e5e7eb;
   padding: 16px 20px;
@@ -69,10 +74,12 @@ html, body {
   color: #4338ca;
   text-decoration: none;
   font-weight: 500;
-  margin: 0 20px;
+  margin: 0;
   font-size: 15px;
   transition: color 0.2s;
 }
+.nav .lang-switch { flex-shrink: 0; box-shadow: none; }
+#chapters { scroll-margin-top: 120px; }
 .nav a:hover {
   color: #1e1b4b;
   text-decoration: underline;

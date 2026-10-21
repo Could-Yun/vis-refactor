@@ -185,22 +185,62 @@
 
 /* ---------- 门户：进度环与知识地图 ---------- */
 .card-progress {
-  position: absolute;
-  top: .8rem;
-  right: .9rem;
-  width: 34px;
-  height: 34px;
+  position: static;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
 }
 .card-progress text { font-size: 10px; fill: #475569; font-weight: 600; }
 .portal-resume {
-  display: inline-block;
-  margin-top: .6rem;
-  padding: .45rem .9rem;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: .75rem 1.1rem;
+  border-radius: 10px;
   background: var(--feat-accent);
   color: #fff;
   text-decoration: none;
   font-size: .88rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.portal-resume:hover { background: #3730a3; }
+.portal-resume:focus-visible { outline: 3px solid #a5b4fc; outline-offset: 4px; }
+.learning-overview {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 24px;
+  margin-bottom: 28px;
+  border: 1px solid #dfe1f1;
+  border-radius: 14px;
+  background: #fff;
+}
+.learning-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 12px; background: #eef2ff; color: #4338ca; font-size: 26px; }
+.learning-copy { min-width: 0; }
+.learning-eyebrow { color: #6366a0; font-size: 12px; font-weight: 600; letter-spacing: .08em; }
+.learning-heading { color: #1e1b4b; font-size: 20px; font-weight: 700; margin: 3px 0 6px; line-height: 1.4; }
+.learning-detail { margin: 0; color: #475569; font-size: 14px; overflow-wrap: anywhere; }
+.learning-disclaimer { margin: 7px 0 0; color: #64748b; font-size: 12px; }
+#chapters .cards { grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+#chapters .card { display: flex; flex-direction: column; min-width: 0; }
+.card-topline { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-bottom: 18px; }
+#chapters .card-topline .card-num { margin: 0; }
+#chapters .card-topline .card-status { position: static; max-width: 100%; padding: 4px 10px; line-height: 1.5; }
+#chapters .card-status[data-state="new"] { background: #f1f5f9; color: #64748b; }
+#chapters .card-status[data-state="reading"] { background: #eef2ff; color: #4338ca; }
+#chapters .card-status[data-state="visited"] { background: #dcfce7; color: #166534; }
+.card-learning { display: flex; align-items: center; gap: 12px; margin-top: auto; padding: 16px 0; }
+.card-learning > div { display: flex; flex-direction: column; gap: 2px; }
+.card-learning-label { font-size: 12px; color: #64748b; }
+.card-learning strong { font-size: 15px; color: #334155; font-variant-numeric: tabular-nums; }
+@media (max-width: 700px) {
+  .learning-overview { grid-template-columns: 1fr; gap: 14px; padding: 20px; }
+  .learning-icon { display: none; }
+  .learning-heading { font-size: 19px; }
+  .learning-overview .portal-resume { width: 100%; }
 }
 #knowledge-map { width: 100%; min-height: 420px; }
 #knowledge-map .node circle { cursor: pointer; stroke: #fff; stroke-width: 1.5; }
