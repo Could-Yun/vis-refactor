@@ -29,6 +29,11 @@ function ring(done, total) {
 }
 
 function init() {
+  const nav = document.querySelector('.nav');
+  const links = document.createElement('div');
+  links.className = 'nav-links';
+  links.append(...nav.children);
+  nav.append(links);
   const languageSwitch = document.querySelector('.lang-switch-floating');
   if (languageSwitch) {
     languageSwitch.classList.remove('lang-switch-floating');

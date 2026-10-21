@@ -23,6 +23,9 @@ with sync_playwright() as p:
  for width,lang,name in [(1440,'zh-CN','桌面'),(390,'zh-CN','手机'),(390,'en-US','英文手机'),(1440,'en-US','英文桌面')]:
   page.set_viewport_size({'width':width,'height':1100})
   page.evaluate('(l)=>window.__i18n.setLocale(l)',lang)
+  links=page.locator('.nav-links').bounding_box()
+  assert abs(links['x']+links['width']/2-width/2)<2
+  page.locator('.nav').screenshot(path=str(OUT/f'导航-{name}.png'))
   page.locator('#chapters').scroll_into_view_if_needed()
   assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
   for card in page.locator('#chapters .card').all():
